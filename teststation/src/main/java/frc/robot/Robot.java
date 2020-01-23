@@ -17,7 +17,9 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardLayout;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
-
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.CANEncoder;
 
 
 
@@ -28,6 +30,10 @@ public class Robot extends TimedRobot {
   private static final String kCustomAuto = "My Auto";
   private String m_autoSelected;
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
+  
+  private CANSparkMax m_motor;
+  private CANSparkMax m_motor2;
+
 
   Spark spark0 = new Spark(0);
   Spark spark1 = new Spark(1);
@@ -78,6 +84,9 @@ public class Robot extends TimedRobot {
     SmartDashboard.putData("Auto choices", m_chooser);
     clock.start();
 
+    m_motor = new CANSparkMax(10, MotorType.kBrushless);
+   // m_motor.restoreFactoryDefaults();
+    m_motor2 = new CANSparkMax(11, MotorType.kBrushless);
     
   }
 
@@ -114,6 +123,11 @@ public class Robot extends TimedRobot {
         // Put default auto code here
         break;
     }
+
+    m_motor.set(.5) ;
+
+
+
   }
 
   
@@ -293,6 +307,8 @@ if ( stop1 == true || stop2 == true){
   spark1.set(0);
   spark2.set(0);
   spark3.set(0);
+  m_motor.set(0);
+  m_motor2.set(0);
 }
 // this is the corresponding code to the booleans setting each pair of buttons to one in a positive direction, and the other in a negative direction for
 // both controllers.
@@ -301,13 +317,17 @@ if ( allmotorsonF1 == true || allmotorsonF2 == true){
   spark0.set(1);
   spark1.set(1);
   spark2.set(1);
+  m_motor.set(1);
+  m_motor2.set(-1);
   //spark3.set(1);
 }
 if ( allmotorsonR1 == true || allmotorsonR2 == true ){
   spark0.set(-1);
   spark1.set(-1);
   spark2.set(-1);
-  //spark3.set(-1);
+  m_motor.set(-1);
+  m_motor2.set(1)
+;  //spark3.set(-1);
 }
 
 
@@ -315,12 +335,16 @@ if ( allmotorshalfF1 == true || allmotorshalfF2 == true){
   spark0.set(0.5);
   spark1.set(0.5);
   spark2.set(0.5);
+  m_motor.set(0.5);
+  m_motor2.set(-0.5);
   //spark3.set(0.5);
 }
 if ( allmotorshalfR1 == true || allmotorshalfR2 == true){
   spark0.set(-0.5);
   spark1.set(-0.5);
   spark2.set(-0.5);
+  m_motor.set(-0.5);
+  m_motor2.set(0.5);
   //spark3.set(-0.5);
 }
 
@@ -362,7 +386,14 @@ indexspinner();
      spark3.set(-1);
    }
   }
+  public void sparkmaxtester() {
 
+
+
+
+
+
+  }
 
 }
 
