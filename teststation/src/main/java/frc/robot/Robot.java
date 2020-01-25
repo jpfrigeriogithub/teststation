@@ -332,19 +332,19 @@ if ( allmotorsonR1 == true || allmotorsonR2 == true ){
 
 
 if ( allmotorshalfF1 == true || allmotorshalfF2 == true){
-  spark0.set(0.5);
-  spark1.set(0.5);
-  spark2.set(0.5);
-  m_motor.set(0.5);
-  m_motor2.set(-0.5);
+  spark0.set(0.25);
+  spark1.set(0.25);
+  spark2.set(0.25);
+  m_motor.set(0.25);
+  m_motor2.set(-0.25);
   //spark3.set(0.5);
 }
 if ( allmotorshalfR1 == true || allmotorshalfR2 == true){
-  spark0.set(-0.5);
-  spark1.set(-0.5);
-  spark2.set(-0.5);
-  m_motor.set(-0.5);
-  m_motor2.set(0.5);
+  spark0.set(-0.25);
+  spark1.set(-0.25);
+  spark2.set(-0.25);
+  m_motor.set(-0.25);
+  m_motor2.set(0.25);
   //spark3.set(-0.5);
 }
 
