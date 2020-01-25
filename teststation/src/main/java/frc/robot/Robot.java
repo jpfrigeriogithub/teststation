@@ -378,7 +378,7 @@ indexspinner();
     SmartDashboard.putNumber("motor start time:", motorstarttime);
     double timelag =  ( clock.get() - motorstarttime) ;
     SmartDashboard.putNumber("time lag:", timelag);
-    if ( motorstarttime > 0 && ( clock.get() - motorstarttime) > 0.25){
+    if ( motorstarttime > 0 && ( clock.get() - motorstarttime) > 0.35){
      spark3.set(0);
       motorstarttime = 0 ;  
    }
